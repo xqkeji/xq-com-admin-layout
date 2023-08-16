@@ -20,9 +20,6 @@
                 "param":[{
                     "vendor/xqkeji/xq-com-admin-layout/src/":"resource/xq-admin-layout/"
                 }]
-            },
-            {
-                "cmd":["xqkeji\\app\\admin\\composer\\Install","postInstall"]
             }
         ],
         "post-package-update":[
