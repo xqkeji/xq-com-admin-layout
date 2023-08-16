@@ -1,2 +1,2 @@
 # xq-com-admin-layout
-后台管理页面的布局程序
+新齐通用后台管理页面布局页面的js、css等前端程序的composer包。
