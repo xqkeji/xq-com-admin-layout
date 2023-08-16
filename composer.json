@@ -14,6 +14,38 @@
         }
     ],
     "extra": {
-        
+        "post-package-install":[
+            {
+                "cmd":["xqkeji\\composer\\Asset","copyDirs"],
+                "param":[{
+                    "vendor/xqkeji/xq-com-admin-layout/src/":"resource/xq-admin-layout/"
+                }]
+            },
+            {
+                "cmd":["xqkeji\\app\\admin\\composer\\Install","postInstall"]
+            }
+        ],
+        "post-package-update":[
+            {
+                "cmd":["xqkeji\\composer\\Asset","rmDirs"],
+                "param":[{
+                    "resource/xq-admin-layout/"
+                }]
+            },
+            {
+                "cmd":["xqkeji\\composer\\Asset","copyDirs"],
+                "param":[{
+                    "vendor/xqkeji/xq-com-admin-layout/src/":"resource/xq-admin-layout/"
+                }]
+            }
+        ],
+        "post-package-uninstall":[
+            {
+                "cmd":["xqkeji\\composer\\Asset","rmDirs"],
+                "param":[{
+                    "resource/xq-admin-layout/"
+                }]
+            }
+        ]
     }
 }
