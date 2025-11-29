@@ -1,8 +1,8 @@
 /*!
- * xq-admin-layout v1.0.1 (https://xqkeji.cn/demo/xq-adminpage)
+ * xq-admin-layout v1.1.1 (https://xqkeji.cn/demo/xq-adminpage)
  * Author xqkeji.cn
  * LICENSE SSPL-1.0
- * Copyright 2023 xqkeji.cn
+ * Copyright 2025 xqkeji.cn
  */
  @charset "UTF-8";
 /*
@@ -22,7 +22,6 @@
  */
 body {
   height: auto;
-  min-width: 1024px;
 }
 
 html {
@@ -275,6 +274,136 @@ html {
 #xq-footer a {
   text-decoration: none;
   color: rgb(0, 0, 0);
+}
+@media (max-width: 575px) {
+  #xq-footer {
+    font-size: 14px;
+  }
+  #xq-footer strong, #xq-footer b {
+    font-size: 14px;
+  }
+  #xq-footer .ps-3 {
+    padding-left: 8px !important;
+  }
+  #xq-footer .pe-3 {
+    padding-right: 8px !important;
+  }
+}
+
+@media (max-width: 991.98px) {
+  #xq-sidebar {
+    position: fixed;
+    left: -280px;
+    top: 50px;
+    height: calc(100vh - 50px);
+    transition: left 0.3s ease;
+    z-index: 1050;
+  }
+  #xq-sidebar.show {
+    left: 0;
+  }
+  #xq-sidebar.mini {
+    left: -65px;
+  }
+  #xq-sidebar.mini.show {
+    left: 0;
+  }
+  .sidebar-backdrop {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+    display: none;
+  }
+  .sidebar-backdrop.show {
+    display: block;
+  }
+  #xq-content {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+  #xq-content.mini {
+    width: 100% !important;
+  }
+  #xq-footer {
+    margin-left: 0 !important;
+  }
+  #xq-footer.mini {
+    margin-left: 0 !important;
+  }
+  #xq-tab-nav {
+    width: calc(100% - 40px);
+  }
+  #xq-header > .col-2 {
+    width: auto;
+    flex: 0 0 auto;
+  }
+  #xq-header > .col-10 {
+    width: calc(100% - 60px);
+  }
+  #xq-header.mini > .col-2 {
+    width: auto;
+  }
+  #xq-header.mini > .col-10 {
+    width: calc(100% - 60px);
+  }
+  #xq-tab-content {
+    height: calc(100vh - 50px - 42px - 42px);
+  }
+  #xq-tab-content iframe {
+    height: 100%;
+  }
+}
+@media (max-width: 575.98px) {
+  #xq-header {
+    height: 40px;
+  }
+  #xq-header .btn {
+    color: rgb(255, 255, 255);
+  }
+  #xq-header .dropdown-menu {
+    min-width: auto;
+    background-color: #ffffff;
+    border-color: #dee2e6;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  }
+  #xq-header .dropdown-menu .dropdown-item {
+    color: #212529;
+    padding: 0.25rem 1rem;
+  }
+  #xq-header .dropdown-menu .dropdown-item:hover, #xq-header .dropdown-menu .dropdown-item:active, #xq-header .dropdown-menu .dropdown-item.active {
+    background-color: #e2e3e5;
+    color: #212529;
+  }
+  #xq-content {
+    margin-top: 40px;
+  }
+  #xq-tab-content {
+    height: calc(100vh - 50px - 42px);
+    min-height: calc(100vh - 50px - 42px);
+  }
+  #xq-tab-content .tab-pane {
+    height: 100%;
+  }
+  #xq-sidebar {
+    top: 40px;
+  }
+  .sidebar-backdrop {
+    top: 40px;
+  }
+  .nav-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+  #xq-tab-nav-ul li a {
+    padding: 0.5rem 0.5rem 0.5rem 0.75rem;
+  }
+  .brand-link span:first-child {
+    margin-left: 0 !important;
+  }
 }
 
 /*# sourceMappingURL=xq-admin-layout.css.map */

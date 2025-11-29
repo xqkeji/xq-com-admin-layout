@@ -1,59 +1,11 @@
 /*!
- * xq-admin-layout v1.0.1 (https://xqkeji.cn/demo/xq-adminpage)
+ * xq-admin-layout v1.1.1 (https://xqkeji.cn/demo/xq-adminpage)
  * Author xqkeji.cn
  * LICENSE SSPL-1.0
- * Copyright 2023 xqkeji.cn
+ * Copyright 2025 xqkeji.cn
  */
  "use strict";
 (() => {
-  // src/ts/xq-constant.ts
-  var TAB_FULL = "#xq-tab-fullscreen";
-  var TAB_LEFT = "#xq-tab-left";
-  var TAB_RIGHT = "#xq-tab-right";
-  var TAB_NAV = "#xq-tab-nav";
-  var TAB_NAV_UL = "#xq-tab-nav-ul";
-  var TAB_ACTIVE = "#xq-tab-nav-ul>li>a.active";
-  var TAB_RIGT_MENU = "#xq-tab-contentmenu";
-  var TAB_REFRESH = "#xq-tab-refresh";
-  var TAB_CLOSE_ALL = "#xq-tab-close-all";
-  var TAB_CLOSE_OTHER = "#xq-tab-close-other";
-  var SIDEBAR = "#xq-sidebar";
-  var FILEINPUT_CLASS = ".xq-fileinput";
-  var MODULE_MENU = "#xq-top-nav";
-  var SIDEBAR_MINI_NAME = "mini";
-  var SIDEBAR_MENU_BTN = '[xq-widget="xq-mini-menu"]';
-  var LAYOUT_HEADER = "#xq-header";
-  var LAYOUT_CONTENT = "#xq-content";
-  var LAYOUT_FOOTER = "#xq-footer";
-  var CAPTCHA_CLASS = ".xq-captcha";
-  var TAB_CONTENT = "#xq-tab-content";
-  var TAB_CLOSE = "#xq-tab-nav-ul .nav-item .nav-link button.close";
-  var TAB_ALL_SWITCH = "#xq-tab-nav-ul .nav-item .nav-link";
-  var TAB_MENU_CLASS = "xq-menu";
-  var SIDERBAR_A_CLASS_ACTIVE = "bg-primary";
-  var SIDERBAR_A_CLASS = "bg-dark";
-  var LOGOUT_CLASS = ".xq-logout";
-  var MENU_OPEN_CLASS = "bi-chevron-down";
-  var MENU_CLOSE_CLASS = "bi-chevron-left";
-
-  // src/ts/xq-captcha.ts
-  var bindCaptcha = () => {
-    const captcha = document.querySelector(CAPTCHA_CLASS);
-    if (captcha) {
-      captcha.addEventListener("click", (event) => {
-        const target = event.currentTarget;
-        let src = target.getAttribute("src");
-        if (src.includes("?")) {
-          src = src.slice(0, Math.max(0, src.lastIndexOf("?")));
-          src = src + "?xq-r=" + Math.random().toString();
-        } else {
-          src = src + "?xq-r=" + Math.random().toString();
-        }
-        target.setAttribute("src", src);
-      });
-    }
-  };
-
   // node_modules/xq-util/dist/index.mjs
   var domReady = (callBack) => {
     if (document.readyState === "loading") {
@@ -82,52 +34,33 @@
     element.after(node);
   };
 
-  // src/ts/xq-fileinput.ts
-  var bindFileinput = () => {
-    const fileinputs = document.querySelectorAll(FILEINPUT_CLASS);
-    if (fileinputs && typeof jQuery !== void 0) {
-      let config;
-      for (const fileinput of fileinputs) {
-        config = fileinput.hasAttribute("xq-config") ? fileinput.getAttribute("xq-config") : "{}";
-        $(fileinput).fileinput(JSON.parse(config)).on("filedeleted", (event) => {
-          const target = event.currentTarget;
-          updateFileInputValue(target);
-        }).on("fileuploaded", (event) => {
-          const target = event.currentTarget;
-          updateFileInputValue(target);
-        }).on("filesorted", (event) => {
-          const target = event.currentTarget;
-          updateFileInputValue(target);
-        });
-        updateFileInputValue(fileinput);
-      }
-    }
-  };
-  var updateFileInputValue = (fileinput) => {
-    const fileinput_id = fileinput.getAttribute("id");
-    const fileinput_value_id = fileinput_id.replace("-xq-fileinput", "");
-    const fileinput_value = document.querySelector("#" + fileinput_value_id);
-    const fileinput_preview = $(fileinput).fileinput("getPreview");
-    fileinput_value?.setAttribute("value", JSON.stringify(fileinput_preview));
-    const fileCount = $(fileinput).fileinput("getFilesCount", true);
-    const configStr = fileinput.getAttribute("xq-config");
-    const config = JSON.parse(configStr);
-    if ("required" in config) {
-      if (fileCount > 0) {
-        fileinput.removeAttribute("required");
-      } else {
-        fileinput.setAttribute("required", "true");
-      }
-      if ("content" in fileinput_preview) {
-        const { content } = fileinput_preview;
-        if (content.length === 0) {
-          fileinput.setCustomValidity("\u9700\u8981\u81F3\u5C11\u4E0A\u4F20\u4E00\u4E2A\u6587\u4EF6");
-        } else {
-          fileinput.setCustomValidity("");
-        }
-      }
-    }
-  };
+  // src/ts/xq-constant.ts
+  var TAB_FULL = "#xq-tab-fullscreen";
+  var TAB_LEFT = "#xq-tab-left";
+  var TAB_RIGHT = "#xq-tab-right";
+  var TAB_NAV = "#xq-tab-nav";
+  var TAB_NAV_UL = "#xq-tab-nav-ul";
+  var TAB_ACTIVE = "#xq-tab-nav-ul>li>a.active";
+  var TAB_RIGT_MENU = "#xq-tab-contentmenu";
+  var TAB_REFRESH = "#xq-tab-refresh";
+  var TAB_CLOSE_ALL = "#xq-tab-close-all";
+  var TAB_CLOSE_OTHER = "#xq-tab-close-other";
+  var SIDEBAR = "#xq-sidebar";
+  var MODULE_MENU = "#xq-top-nav";
+  var SIDEBAR_MINI_NAME = "mini";
+  var SIDEBAR_MENU_BTN = '[xq-widget="xq-mini-menu"]';
+  var LAYOUT_HEADER = "#xq-header";
+  var LAYOUT_CONTENT = "#xq-content";
+  var LAYOUT_FOOTER = "#xq-footer";
+  var TAB_CONTENT = "#xq-tab-content";
+  var TAB_CLOSE = "#xq-tab-nav-ul .nav-item .nav-link button.close";
+  var TAB_ALL_SWITCH = "#xq-tab-nav-ul .nav-item .nav-link";
+  var TAB_MENU_CLASS = "xq-menu";
+  var SIDERBAR_A_CLASS_ACTIVE = "bg-primary";
+  var SIDERBAR_A_CLASS = "bg-dark";
+  var LOGOUT_CLASS = ".xq-logout";
+  var MENU_OPEN_CLASS = "bi-chevron-down";
+  var MENU_CLOSE_CLASS = "bi-chevron-left";
 
   // src/ts/xq-logout.ts
   var bindLogout = () => {
@@ -564,6 +497,10 @@
               top_classlist.add(SIDERBAR_A_CLASS_ACTIVE);
             }
           }
+          if (window.innerWidth < 768) {
+            const backdrop = document.getElementById("sidebar-backdrop");
+            backdrop?.click();
+          }
         });
       } else {
         menu.addEventListener("click", (event) => {
@@ -782,10 +719,54 @@
     });
   };
 
+  // src/ts/xq-mobile.ts
+  var bindMobileMenuToggle = () => {
+    const toggleBtn = document.getElementById("mobile-menu-toggle");
+    const sidebar = document.querySelector(SIDEBAR);
+    const backdrop = document.getElementById("sidebar-backdrop");
+    if (toggleBtn && sidebar && backdrop) {
+      toggleBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("show");
+        backdrop.classList.toggle("show");
+      });
+      backdrop.addEventListener("click", () => {
+        sidebar.classList.remove("show");
+        backdrop.classList.remove("show");
+      });
+    }
+  };
+  var bindMobileModuleSwitch = () => {
+    const dropdownItems = document.querySelectorAll("#mobile-module-dropdown + .dropdown-menu .dropdown-item");
+    const dropdownToggle = document.getElementById("mobile-module-dropdown");
+    if (dropdownItems && dropdownToggle) {
+      dropdownItems.forEach((item) => {
+        item.addEventListener("click", (e) => {
+          e.preventDefault();
+          const target = item.getAttribute("href");
+          dropdownToggle.textContent = item.textContent?.trim();
+          dropdownItems.forEach((i) => i.classList.remove("active"));
+          item.classList.add("active");
+          const moduleLinks = document.querySelectorAll('#xq-top-nav a[href="' + target + '"]');
+          if (moduleLinks.length > 0) {
+            moduleLinks[0].click();
+          }
+          const sidebar = document.querySelector(SIDEBAR);
+          const backdrop = document.getElementById("sidebar-backdrop");
+          if (sidebar && backdrop) {
+            sidebar.classList.remove("show");
+            backdrop.classList.remove("show");
+          }
+        });
+      });
+    }
+  };
+  var mobileInit = () => {
+    bindMobileMenuToggle();
+    bindMobileModuleSwitch();
+  };
+
   // src/ts/index.ts
   var xqAdminLayout = () => {
-    bindCaptcha();
-    bindFileinput();
     bindLogout();
     initScrollbar();
     bindModuleMenu();
@@ -793,6 +774,7 @@
     tabInit();
     toolbarInit();
     bindMessage();
+    mobileInit();
   };
   domReady(() => {
     xqAdminLayout();
