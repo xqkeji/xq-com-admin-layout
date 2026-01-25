@@ -1,5 +1,5 @@
 /*!
- * xq-admin-layout v1.1.2 (https://xqkeji.cn/demo/xq-adminpage)
+ * xq-admin-layout v1.1.4 (https://xqkeji.cn/demo/xq-adminpage)
  * Author xqkeji.cn
  * LICENSE SSPL-1.0
  * Copyright 2026 xqkeji.cn
@@ -342,22 +342,17 @@
       }
     } else {
       const tabs = document.querySelector(TAB_NAV_UL);
+      const activeTab2 = tabs.querySelector(TAB_ACTIVE);
       const closes = tabs.querySelectorAll("li a:not(.active)");
       for (const close of closes) {
         const c = close.querySelector("button.close");
-        c.click();
+        if (c) {
+          c.click();
+        }
       }
-      const tab = document.querySelector(TAB_ACTIVE);
-      tab.classList.add("active");
-      const content_id = tab?.getAttribute("data-bs-target");
-      const first_content = document.querySelector(content_id);
-      const first_li = tabs.querySelector("li:first-child");
-      if (first_content) {
-        first_content?.classList.add("active");
-      }
-      if (first_li) {
-        first_li.style.marginLeft = "0px";
-      }
+      const activeId = activeTab2.getAttribute("id");
+      const active_id = activeId.replace("-tab", "");
+      activeTabById(active_id);
     }
   };
 
