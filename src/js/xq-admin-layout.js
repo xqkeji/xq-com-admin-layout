@@ -1,8 +1,8 @@
 /*!
- * xq-admin-layout v1.1.1 (https://xqkeji.cn/demo/xq-adminpage)
+ * xq-admin-layout v1.1.2 (https://xqkeji.cn/demo/xq-adminpage)
  * Author xqkeji.cn
  * LICENSE SSPL-1.0
- * Copyright 2025 xqkeji.cn
+ * Copyright 2026 xqkeji.cn
  */
  "use strict";
 (() => {
@@ -331,11 +331,11 @@
       }
       const first_li = tabs.querySelector("li:first-child");
       const first_tab = first_li.querySelector("a");
-      first_tab?.classList.add("acitve");
+      first_tab?.classList.add("active");
       const first_content_id = first_tab?.getAttribute("data-bs-target");
       const first_content = document.querySelector(first_content_id);
       if (first_content) {
-        first_content?.classList.add("acitve");
+        first_content?.classList.add("active");
       }
       if (first_li) {
         first_li.style.marginLeft = "0px";
@@ -348,12 +348,12 @@
         c.click();
       }
       const tab = document.querySelector(TAB_ACTIVE);
-      tab.classList.add("acitve");
+      tab.classList.add("active");
       const content_id = tab?.getAttribute("data-bs-target");
       const first_content = document.querySelector(content_id);
       const first_li = tabs.querySelector("li:first-child");
       if (first_content) {
-        first_content?.classList.add("acitve");
+        first_content?.classList.add("active");
       }
       if (first_li) {
         first_li.style.marginLeft = "0px";
